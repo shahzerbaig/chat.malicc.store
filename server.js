@@ -9,8 +9,8 @@ const PORT = process.env.PORT;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-
+//app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 // DeepSeek API configuration
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 const DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"; // Replace with the actual DeepSeek API endpoint
@@ -48,5 +48,8 @@ app.post("/chat", async (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on ${PORT}`);
 });
+
+console.log("Port:", PORT);
+console.log("DeepSeek API Key:", DEEPSEEK_API_KEY);
